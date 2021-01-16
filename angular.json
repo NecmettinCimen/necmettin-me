@@ -13,11 +13,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/argon-design-system-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "rxjs/add/operator/filter",
+              "ng2-nouislider"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

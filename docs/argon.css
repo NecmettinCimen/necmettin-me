@@ -1,11 +1,11 @@
 /*!
 
 =========================================================
-* Argon Design System Angular - v1.0.0
+* Argon Design System Angular - v1.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/argon-design-system-angular
-* Copyright 2018 Creative Tim (https://www.creative-tim.com)
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
 * Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
 
 * Coded by Creative Tim
@@ -14042,6 +14042,10 @@ textarea[resize=horizontal] {
     font-size: 4.25rem
 }
 
+.icon-xl+.icon-text {
+    width: calc(100% - $icon-size-xl - 1)
+}
+
 .icon-lg {
     width: 4rem;
     height: 4rem
@@ -14052,6 +14056,10 @@ textarea[resize=horizontal] {
     font-size: 3.25rem
 }
 
+.icon-lg+.icon-text {
+    width: calc(100% - $icon-size-lg - 1)
+}
+
 .icon-sm {
     width: 2rem;
     height: 2rem
@@ -14060,6 +14068,10 @@ textarea[resize=horizontal] {
 .icon-sm i,
 .icon-sm svg {
     font-size: 1.25rem
+}
+
+.icon-sm+.icon-text {
+    width: calc(100% - $icon-size-sm - 1)
 }
 
 .icon-shape {
