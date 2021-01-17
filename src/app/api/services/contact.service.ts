@@ -4,11 +4,11 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SkillService {
+export class ContactService {
 
   constructor(private apiService: ApiService) { }
-
-  async First5() {
-    return (await this.apiService.get(`/api/v1/Skill?Skip=0&Take=6`)).data;
+  
+  async Send(model:any){
+    return await this.apiService.post("/api/v1/Contact",model);
   }
 }
