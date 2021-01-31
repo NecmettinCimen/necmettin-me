@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { CommonApiResponse } from './models/commonApiResponse';
 
 @Injectable({
@@ -10,9 +11,11 @@ export class ApiService {
   constructor(public httpClient: HttpClient) { }
 
   async get(url: string) {
-    console.log("get", url)
+    if (!environment.production)
+      console.log("get", url)
     var response = await this.httpClient.get<CommonApiResponse>(url).toPromise();
-    console.log("get-response", response)
+    if (!environment.production)
+      console.log("get-response", response)
     if (response.Success) {
       return response.Result
     } else {

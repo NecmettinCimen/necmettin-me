@@ -2,7 +2,6 @@ import { environment } from './../../environments/environment';
 import { ContactService } from './../api/services/contact.service';
 import { SkillService } from './../api/services/skill.service';
 import { ProjectsService } from './../api/services/projects.service';
-import { TableDataResponse } from './../api/services/models/tableDataResponse';
 import { Component, OnInit } from '@angular/core';
 import { ParametersService } from '../api/services/parameters.service';
 

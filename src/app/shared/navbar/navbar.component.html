@@ -28,34 +28,51 @@
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-ui-04 d-lg-none"></i>
-            <span class="nav-link-inner--text">Sayfalar</span>
+            <span class="nav-link-inner--text">Projeler</span>
           </a>
           <div class="dropdown-menu-xl dropdown-menu" >
             <div class="dropdown-menu-inner">
-              <a routerLinkActive="active" [routerLink]="['documentation/tutorial']" class="media d-flex align-items-center">
+              <a routerLinkActive="active" href="https://github.com/NecmettinCimen?tab=repositories" class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                   <i class="ni ni-spaceship"></i>
                 </div>
                 <div class="media-body ml-3">
-                  <h6 class="heading text-primary mb-md-1">Projeler</h6>
                   <p class="description d-none d-md-inline-block mb-0">Github üzerinde paylaştığım açık kaynak kodlu projeleri ve daha fazlası.</p>
                 </div>
               </a>
-              <a routerLinkActive="active" [routerLink]="['documentation/colors']" class="media d-flex align-items-center">
+            </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner--text">Blog</span>
+          </a>
+          <div class="dropdown-menu-xl dropdown-menu" >
+            <div class="dropdown-menu-inner">
+              <a routerLinkActive="active" href="https://www.linkedin.com/in/necmettincimen/" class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
                   <i class="ni ni-palette"></i>
                 </div>
                 <div class="media-body ml-3">
-                  <h6 class="heading text-primary mb-md-1">Blog</h6>
                   <p class="description d-none d-md-inline-block mb-0">Deneyimlerimi aktardığım yazılarım ve sıkça kullandığım design patternler.</p>
                 </div>
               </a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-ui-04 d-lg-none"></i>
+            <span class="nav-link-inner--text">Deneyimlerim</span>
+          </a>
+          <div class="dropdown-menu-xl dropdown-menu" >
+            <div class="dropdown-menu-inner">
               <a routerLinkActive="active" [routerLink]="['documentation/alerts']" class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
                   <i class="ni ni-ui-04"></i>
                 </div>
                 <div class="media-body ml-3">
-                  <h5 class="heading text-warning mb-md-1">Deneyimlerim</h5>
                   <p class="description d-none d-md-inline-block mb-0">Çalıştığım iş yerleri ve orda yaptığım projeler hakkında kısa bilgiler.</p>
                 </div>
               </a>
@@ -89,7 +106,7 @@
           </a>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a href="#" target="_blank" class="btn btn-neutral btn-icon">
+          <a href="/assets/Özgeçmiş-Necmettin Çimen.docx.pdf" target="_blank" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
               <i class="fa fa-cloud-download mr-2"></i>
             </span>
