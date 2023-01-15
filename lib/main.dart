@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 // @dart=2.9
+import 'package:flutter/material.dart';
 import 'package:necport/ui/home.dart';
 import 'package:necport/ui/projects.dart';
 
@@ -15,9 +15,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Necmettin Çimen",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(brightness: Brightness.light, primaryColorBrightness: Brightness.light, accentColorBrightness: Brightness.light),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColorBrightness: Brightness.light,
+          accentColorBrightness: Brightness.light),
       initialRoute: '/',
-      routes: {'/': (context) => MyAppChild(), '/projects': (context) => ProjectsPage()},
+      routes: {
+        '/': (context) => MyAppChild(),
+        '/projects': (context) => ProjectsPage()
+      },
     );
   }
 }

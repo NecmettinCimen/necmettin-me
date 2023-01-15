@@ -30,7 +30,8 @@ class _ProjectListState extends State<ProjectList> {
 
   getList() async {
     try {
-      var response = await http.get(Uri.parse("https://api.github.com/users/${Strings.githubUserName}/repos"));
+      var response = await http.get(Uri.parse(
+          "https://api.github.com/users/${Strings.githubUserName}/repos"));
       if (response.statusCode == 200) {
         final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
         setState(() {
@@ -50,8 +51,11 @@ class _ProjectListState extends State<ProjectList> {
   searchOnChange(String text) {
     setState(() {
       list = fullList
-          .where(
-              (element) => element.name!.toLowerCase().contains(text.toLowerCase()) || (element.description ?? "").toLowerCase().contains(text.toLowerCase()))
+          .where((element) =>
+              element.name!.toLowerCase().contains(text.toLowerCase()) ||
+              (element.description ?? "")
+                  .toLowerCase()
+                  .contains(text.toLowerCase()))
           .toList();
     });
   }
@@ -59,52 +63,76 @@ class _ProjectListState extends State<ProjectList> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Center(
+        ? const Center(
             child: CircularProgressIndicator(),
           )
         : Column(
             children: [
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    list
+                            .where((element) =>
+                                element.homepage != null &&
+                                element.homepage != "")
+                            .length
+                            .toString() +
+                        " LIVE PROJECT! YOU CAN VISIT :)",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 100,
                 child: TextField(
-                  decoration: InputDecoration(hintText: "Search"),
+                  decoration: const InputDecoration(hintText: "Search"),
                   onChanged: searchOnChange,
                 ),
               ),
               SizedBox(
                 height: 500,
-                child: GridView.count(
-                  crossAxisCount: 5,
-                  children: List.generate(list.length, (index) {
-                    var item = list[index];
-                    return Card(
-                      child: Column(
-                        children: [
-                          Image.network(
+                child: ListView.builder(
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      var item = list[index];
+                      return Card(
+                        child: ListTile(
+                          leading: Image.network(
                             Assets.github,
-                            color: Color(0xFF45405B),
-                            height: 220.0,
-                            width: 220.0,
+                            color: const Color(0xFF45405B),
                           ),
-                          ListTile(
-                            title: Text((item.name ?? "").toLowerCase()),
-                            subtitle: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start, children: [
-                              Text(item.description ?? ""),
-                              Text(timeago.format(DateTime.parse(item.createdAt ?? ""))),
-                            ]),
-                            trailing: TextButton(
-                              child: Text("Show"),
-                              onPressed: () async {
-                                var uri = Uri.parse(item.htmlUrl ?? "https://github.com/necmettincimen");
-                                await launchUrl(uri);
-                              },
-                            ),
+                          title: Text((item.name ?? "").toLowerCase()),
+                          subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(item.description ?? ""),
+                                Text(timeago.format(
+                                    DateTime.parse(item.createdAt ?? ""))),
+                                Visibility(
+                                  visible: item.homepage != null ||
+                                      item.homepage != "",
+                                  child: TextButton(
+                                    child: Text(item.homepage ?? ""),
+                                    onPressed: () async {
+                                      var uri = Uri.parse(item.homepage ?? "");
+                                      await launchUrl(uri);
+                                    },
+                                  ),
+                                )
+                              ]),
+                          trailing: TextButton(
+                            child: const Text("Github"),
+                            onPressed: () async {
+                              var uri = Uri.parse(item.htmlUrl ??
+                                  "https://github.com/necmettincimen");
+                              await launchUrl(uri);
+                            },
                           ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
+                        ),
+                      );
+                    }),
               ),
             ],
           );
